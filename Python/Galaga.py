@@ -37,7 +37,7 @@ class Square:
     def draw(self, surface):
         pygame.draw.rect(surface, self.color, self.rect)
 
-
+# Dibujado de nave principal
 sq = Square(nave,200,200,100,100)
 
 bullets = []

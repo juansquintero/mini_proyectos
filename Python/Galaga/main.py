@@ -1,5 +1,7 @@
 
 import pygame, math, random
+from movement import *
+from spawn import *
 
 pygame.init()
 
@@ -12,33 +14,9 @@ fondo = 0,0,0
 disparo = 255,124,221
 nave = 51,255,255
 enemigo = 255,102,102
-
-
-class Square:
-    def __init__(self, color, x, y, width, height):
-        self.rect = pygame.Rect(x,y,width,height)
-        self.color = color
-        self.direction = 'E'
-        self.speed = 5
-
-    def move(self):
-        if self.direction == 'E':
-            self.rect.x = self.rect.x+self.speed
-        if self.direction == 'W':
-            self.rect.x = self.rect.x-self.speed
-        if self.direction == 'N':
-            self.rect.y = self.rect.y-self.speed
-        if self.direction == 'S':
-            self.rect.y = self.rect.y+self.speed
-
-    def collided(self, other_rect):
-        return self.rect.colliderect(other_rect)
-
-    def draw(self, surface):
-        pygame.draw.rect(surface, self.color, self.rect)
-
+        
 # Dibujado de nave principal
-sq = Square(nave,200,200,100,100)
+sq = Spawn(nave,200,200,100,100)
 
 bullets = []
 enemies = []
@@ -71,7 +49,7 @@ while not done:
         b.move()
     for e in enemies:
         e.move()
-    sq.move() 
+    Movement.move() 
     
     #Spawn enemeigos
     if random.randint(1,30) == 15: #15 doesn't matter

@@ -9,7 +9,18 @@ class Pizza(object):
         def __init__(self):
             self.extra_cheese = False
             self.garlic = False
+            self.small = False
+            self.medium = False
+            self.large = False
 
+        def size_small(self):
+            self.small = True
+            return self
+        
+        def size_med(self):
+            self.small = True
+            return self
+            
         def add_garlic(self):
             self.garlic = True
             return self
